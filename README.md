@@ -1,11 +1,14 @@
-# Phising-website-detection
+# Automated-Research-Report-Generation
 
 Detection of given url wheather Legit website or Phishing website.
 
 ##  Project Overview
 # FEATURES OF THE DATASET.
-![image alt](https://github.com/suman520-git/phising-website-detection/blob/main/data/features_1.png?raw=true)
-![image alt](https://github.com/suman520-git/phising-website-detection/blob/main/data/features_2.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Signup.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Login.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Generate_report.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Feedback.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Ready%20for%20download.png?raw=true)
 
 
 1.Dataset have  30 independent features of URL which are used to predict , and 1 dependent feature to be predicted as legit or phishing website.
