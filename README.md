@@ -170,5 +170,5 @@ Create ECR repo copy the URI and keep it to ECR_REPO
 Create a IAM user a provide this permission: AdministratorAccess
 
 ```
-###########################################################################################
+
 
