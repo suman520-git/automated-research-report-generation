@@ -1,90 +1,92 @@
 # Automated-Research-Report-Generation
 
-Detection of given url wheather Legit website or Phishing website.
+Automatic generation of the report on the given "topic name" by the user with Agentic AI(Langgraph framework).
 
 ##  Project Overview
-# FEATURES OF THE DATASET.
-![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Signup.png?raw=true)
-![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Login.png?raw=true)
-![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Generate_report.png?raw=true)
-![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Feedback.png?raw=true)
-![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Ready%20for%20download.png?raw=true)
 
+1.There are three  stategraphs named "ResearchGraphState" ,"InterviewState",and "GenerateAnalystsState" defined for complete workflow(Orchestration).
+  Among three graphs ,"ResearchGraphState" is main graph and reamining two are subgraphs of the main graph. Fileds defined in the subgraphs are the subset of fileds
+  defined in the maion graph.
 
-1.Dataset have  30 independent features of URL which are used to predict , and 1 dependent feature to be predicted as legit or phishing website.
+2.From the first workflow "GenerateAnalystsState" , Analysts will be created with given topic name and number of analysts given by user input  with human feedback to 
+  conduct interview with experts.
 
-2.Data cleaning like removing null values ,duplicate rows have removed , EDA has done on the data.
+3.From the "InterviewState" workflow , based on number of Analysts and topic name , same number of questions will be generated to be asked , send to Tavily search and wikipedia search  to generate answers .All the genearated answers are saved as interview and sections independently
 
-4.Data preprocessing has done.
+4.From the main graph "ResearchGraphState" ,with all the generated sections and content , final report will be generated with introduction, content and conclusion.
 
-3.Two  models have been trained on the training dataset and tested models on the testing dataset.
+5.we can download the final report in the pdf and docx format.
 
-4.During inference pipeline ,for the given URL , features same as 30 features from the dataset have been extracted from the given URL and passed to trained Models to get prediction like Legit or Phishing website
+6.complete workflow
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/workflow.png?raw=true)
 
 ## Project Structure
 ```
-phising-website-detection                       
-├─ api                                          
-│  ├─ templates                                 
-│  │  ├─ index.html                             
-│  │  └─ index_archive.html                     
-│  ├─ main.py                                   
-│  └─ main_archive.py                           
-├─ artifacts                                    
-│  ├─ ann_mlp_model.pkl                         
-│  ├─ scaler.pkl                                
-│  └─ xgb_model.pkl                             
-├─ backend                                      
-│  ├─ app.py                                    
-│  └─ app__.py                                  
-├─ data                                         
-│  ├─ features_1.png                            
-│  ├─ features_2.png                            
-│  └─ phising.csv                               
-├─ inference                                    
-│  ├─ predictor.py                              
-│  └─ __init__.py                               
-├─ mlruns                                       
-│  └─ 1                                         
-│     └─ models                                 
-│        ├─ m-ce3d2e63bdca4680b8cdfa1e4ae54004  
-│        │  └─ artifacts                        
-│        │     ├─ conda.yaml                    
-│        │     ├─ MLmodel                       
-│        │     ├─ model.pkl                     
-│        │     ├─ python_env.yaml               
-│        │     └─ requirements.txt              
-│        └─ m-f1ca879033834835a8d7dbb8041e2d87  
-│           └─ artifacts                        
-│              ├─ conda.yaml                    
-│              ├─ MLmodel                       
-│              ├─ model.pkl                     
-│              ├─ python_env.yaml               
-│              └─ requirements.txt              
-├─ notebook                                     
-│  ├─ EDA.ipynb                                 
-│  ├─ exp.ipynb                                 
-│  └─ phising.csv                               
-├─ src                                          
-│  ├─ config_loader.py                          
-│  ├─ data_loader.py                            
-│  ├─ pipeline.py                               
-│  ├─ preprocessor.py                           
-│  ├─ train_ann.py                              
-│  ├─ train_xgboost.py                          
-│  ├─ utils.py                                  
-│  ├─ website_feature_extraction.py             
-│  └─ __init__.py                               
-├─ templates                                    
-│  └─ index.html                                
-├─ config.yaml                                  
-├─ Dockerfile                                   
-├─ mlflow.db                                    
-├─ pyproject.toml                               
-├─ README.md                                    
-├─ requirements.txt                             
-├─ run_pipeline.py                              
-└─ setup.py                                     
+automated-research-report-generation   
+├─ research_and_analyst                
+│  ├─ api                              
+│  │  ├─ models                        
+│  │  │  ├─ request_models.py          
+│  │  │  └─ __init__.py                
+│  │  ├─ routes                        
+│  │  │  ├─ report_routes.py           
+│  │  │  └─ __init__.py                
+│  │  ├─ services                      
+│  │  │  ├─ report_service.py          
+│  │  │  └─ __init__.py                
+│  │  ├─ templates                     
+│  │  │  ├─ dashboard.html             
+│  │  │  ├─ login.html                 
+│  │  │  ├─ report_progress.html       
+│  │  │  └─ signup.html                
+│  │  ├─ main.py                       
+│  │  └─ __init__.py                   
+│  ├─ config                           
+│  │  └─ configuration.yaml            
+│  ├─ database                         
+│  │  ├─ db_config.py                  
+│  │  └─ __init__.py                   
+│  ├─ exception                        
+│  │  ├─ custom_exception.py           
+│  │  └─ __init__.py                   
+│  ├─ logger                           
+│  │  ├─ custom_logger.py              
+│  │  └─ __init__.py                   
+│  ├─ notebook                         
+│  │  └─ test.ipynb                    
+│  ├─ prompt_lib                       
+│  │  ├─ prompts.py                    
+│  │  ├─ prompt_locator.py             
+│  │  └─ __init__.py                   
+│  ├─ router                           
+│  │  └─ __init__.py                   
+│  ├─ schemas                          
+│  │  ├─ models.py                     
+│  │  └─ __init__.py                   
+│  ├─ utils                            
+│  │  ├─ config_loader.py              
+│  │  ├─ model_loader.py               
+│  │  └─ __init__.py                   
+│  ├─ workflows                        
+│  │  ├─ interview_workflow.py         
+│  │  ├─ report_generator_workflow.py  
+│  │  ├─ xxx.py                        
+│  │  └─ __init__.py                   
+│  └─ __init__.py                      
+├─ static                              
+│  ├─ css                              
+│  │  └─ styles.css                    
+│  └─ js                               
+│     └─ app.js                        
+├─ Dockerfile                          
+├─ get_lib_versions.py                 
+├─ main.py                             
+├─ pyproject.toml                      
+├─ README.md                           
+├─ requirements.txt                    
+├─ setup.py                            
+└─ users.db                            
+             
 
 ```
 
@@ -94,8 +96,8 @@ phising-website-detection
 
 ```bash
 # Clone the repository
-git clone https://github.com/suman520-git/phising-website-detection.git
-cd phising-website-detection
+git clone https://github.com/suman520-git/automated-research-report-generation.git
+cd automated-research-report-generation
 
 # Create virtual environment
 conda create -p venv python==3.11 -y
@@ -116,7 +118,11 @@ visit for mlflow ui : 127.0.0.1:5000
 ```
 
 ## MLFLOW UI
-![image alt](https://github.com/suman520-git/phising-website-detection/blob/main/MLflow-1.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Signup.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Login.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Generate_report.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Feedback.png?raw=true)
+![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Ready%20for%20download.png?raw=true)
 
 
 ### 3. Training ML models
@@ -164,24 +170,3 @@ Create a IAM user a provide this permission: AdministratorAccess
 ```
 ###########################################################################################
 
-# Phising-website-detection(LLM Powered)
-
-## Gen-AI Application UI
-![image alt](https://github.com/suman520-git/phising-website-detection/blob/main/Gen_UI.png?raw=true)
-
-
-### 1. Create environment file (Edit .env with your API keys)
-
-
-```bash
-1. GROQ_API_KEY = "xxxxx"
-2. GROQ_MODEL= "xxxxx"
-
-```
-### 2. API Usage
-
-```bash
-# For running the application through Fastapi(command for running the Gen AI application)
-step.1  uvicorn backend.app:app --reload
-
-```
