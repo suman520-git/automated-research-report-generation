@@ -107,56 +107,53 @@ conda activate venv/
 # Install dependencies
 pip install -r requirements.txt
 ```
-
-### 2. Configuring the MLFLOW in the project
+### 2. Confuguration of Variables
 
 ```bash
-# commnds 
-step.1  pip install  mlflow
-step.2  mlflow ui
+GOOGLE_API_KEY = "XXX"
 
-visit for mlflow ui : 127.0.0.1:5000
+GROQ_API_KEY = "XXX"
+
+OPENAI_API_KEY = "xxx"
+
+TAVILY_API_KEY ="xxxxx"
 ```
 
-## MLFLOW UI
+### 3. API Usage
+
+```bash
+# For running the application through Fastapi(command for running the application)
+step.1  uvicorn research_and_analyst.api.main:app --reload
+
+```
+## Application UI
+1.Create account with username and password
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Signup.png?raw=true)
+
+2.Login with created username and password
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Login.png?raw=true)
+
+3.Generate Report
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Generate_report.png?raw=true)
+
+4.Human Feedback
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Feedback.png?raw=true)
+
+5.Download Reports
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Ready%20for%20download.png?raw=true)
 
 
-### 3. Training ML models
-
-```bash
-# For training the models on the dataset
-step.1  python -m run_pipeline
-
-```
-
-### 4. API Usage
-
-```bash
-# For running the application through Fastapi(command for running the ml application)
-step.1  uvicorn api.main:app --reload
-
-```
-## ML Application UI
-![image alt](https://github.com/suman520-git/phising-website-detection/blob/main/ML-UI.png?raw=true)
-
-
-
-### 5.  Dockerization
+### 4.  Dockerization
 ```bash
 # Build Docker Image
-step.1 docker build -t test .
+step.1 docker build -t agent .
 
 #Run Docker Container
-step.2 docker run --rm -p 8000:8005 test
+step.2 docker run --rm -p 8000:8000 agent
 
 ```
 
-### 6. Deployment to AWS APP Runner
+### 5. Deployment to AWS APP Runner
 ```bash
 Repository secrets
 
