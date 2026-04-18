@@ -127,19 +127,19 @@ step.1  uvicorn research_and_analyst.api.main:app --reload
 
 ```
 ## Application UI
-1.Create account with username and password
+1.Create account with username and password.
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Signup.png?raw=true)
 
-2.Login with created username and password
+2.Login with created username and password.
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Login.png?raw=true)
 
-3.Generate Report
+3.Generate Report.
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Generate_report.png?raw=true)
 
-4.Human Feedback
+4.Human Feedback.
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Feedback.png?raw=true)
 
-5.Download Reports
+5.Download Reports.
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/UI-Ready%20for%20download.png?raw=true)
 
 
