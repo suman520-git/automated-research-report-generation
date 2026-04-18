@@ -17,7 +17,7 @@ Automatic generation of the report on the given "topic name" by the user with Ag
 
 5.we can download the final report in the pdf and docx format.
 
-                                       ##complete workflow
+##  WORKFLOW
 
 ![image alt](https://github.com/suman520-git/automated-research-report-generation/blob/main/workflow.png?raw=true)
 
